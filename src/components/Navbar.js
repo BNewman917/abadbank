@@ -29,8 +29,8 @@ export const NavBar = () => {
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                 />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto collapse navbar-collapse justify-content-end">
+                <Navbar.Collapse id="basic-navbar-nav collapse navbar-collapse">
+                    <Nav className="me-auto navbar-collapse justify-content-end">
                         <Nav.Link
                             onClick={() => {
                                 setTitle("Create Account");
