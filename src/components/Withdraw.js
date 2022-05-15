@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./partials/Context";
 import { UseCard } from "./partials/UseCard";
+import { capitalize } from "../helpers/capitalize";
 
 export const Withdraw = () => {
     const context = useContext(UserContext);
@@ -42,6 +43,7 @@ export const Withdraw = () => {
             header="Withdraw"
             body={
                 <>
+                    <h4>Hello, {capitalize(context.users[0].name)}!</h4>
                     <h5>Your balance is: ${balance.toLocaleString()}</h5>
                     <form>
                         <input

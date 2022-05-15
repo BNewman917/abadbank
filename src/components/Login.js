@@ -44,7 +44,7 @@ export const Login = () => {
                 <UseCard
                     bgcolor="success"
                     opacity="10"
-                    header="Login"
+                    header="Log In"
                     status={status}
                     body={
                         <>
