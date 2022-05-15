@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/abadbank/static/css/main.ba02f3e5.css",
+    "main.js": "/abadbank/static/js/main.ca4f6355.js",
+    "index.html": "/abadbank/index.html",
+    "main.ba02f3e5.css.map": "/abadbank/static/css/main.ba02f3e5.css.map",
+    "main.ca4f6355.js.map": "/abadbank/static/js/main.ca4f6355.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ba02f3e5.css",
+    "static/js/main.ca4f6355.js"
+  ]
+}
