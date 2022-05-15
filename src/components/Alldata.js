@@ -24,7 +24,6 @@ export const AllData = () => {
 
     return (
         <Container>
-            <h2>All Data</h2>
             <UserData />
         </Container>
     );

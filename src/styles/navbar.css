@@ -1,4 +1,4 @@
-.nav-link:hover {
+.nav-link:hover, .nav-link.active {
     background-color: #b6e2e7;
     border-radius: 1rem;
 }
