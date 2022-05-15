@@ -12,12 +12,7 @@ export const NavBar = () => {
     return (
         <Navbar id="navbar" expand="md" style={{ backgroundColor: "#cae9ed" }}>
             <Container>
-                <Navbar.Brand
-                    onClick={() => {
-                        setTitle("Home");
-                    }}
-                    href="#"
-                >
+                <Navbar.Brand>
                     <h2>Bad Bank</h2>
                 </Navbar.Brand>
                 <Navbar.Toggle
@@ -31,6 +26,14 @@ export const NavBar = () => {
                 />
                 <Navbar.Collapse id="basic-navbar-nav collapse navbar-collapse">
                     <Nav className="me-auto navbar-collapse justify-content-end">
+                        <Nav.Link
+                            onClick={() => {
+                                setTitle("Home");
+                            }}
+                            href="#/"
+                        >
+                            Home
+                        </Nav.Link>
                         <Nav.Link
                             onClick={() => {
                                 setTitle("Create Account");

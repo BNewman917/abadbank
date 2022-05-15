@@ -8,12 +8,18 @@ export const CreateAccount = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [disabled, setDisabled] = useState(true);
     const context = useContext(UserContext);
 
     function validate(field, label) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!field) {
             setStatus("Error: " + label + " is required");
+            setTimeout(() => setStatus(""), 3000);
+            return false;
+        }
+        if (password.length < 8) {
+            setStatus("Error: Password must be at least 8 characters");
             setTimeout(() => setStatus(""), 3000);
             return false;
         }
@@ -62,9 +68,10 @@ export const CreateAccount = () => {
                             id="name"
                             placeholder="Enter name"
                             value={name}
-                            onChange={(event) =>
-                                setName(event.currentTarget.value)
-                            }
+                            onChange={(event) => {
+                                setName(event.currentTarget.value);
+                                setDisabled(false);
+                            }}
                         />
                         <br />
                         Email
@@ -75,9 +82,10 @@ export const CreateAccount = () => {
                             id="email"
                             placeholder="Enter email"
                             value={email}
-                            onChange={(event) =>
-                                setEmail(event.currentTarget.value)
-                            }
+                            onChange={(event) => {
+                                setEmail(event.currentTarget.value);
+                                setDisabled(false);
+                            }}
                         />
                         <br />
                         Password
@@ -88,12 +96,14 @@ export const CreateAccount = () => {
                             id="password"
                             placeholder="Enter password"
                             value={password}
-                            onChange={(event) =>
-                                setPassword(event.currentTarget.value)
-                            }
+                            onChange={(event) => {
+                                setPassword(event.currentTarget.value);
+                                setDisabled(false);
+                            }}
                         />
                         <br />
                         <button
+                            disabled={disabled}
                             type="submit"
                             className="btn btn-outline-success"
                             onClick={handleCreate}

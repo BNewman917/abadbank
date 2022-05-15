@@ -17,14 +17,14 @@ root.render(
                     users: [
                         {
                             name: "admin",
-                            email: "admin@demo.com",
-                            password: "admin",
+                            email: "admin@admin.com",
+                            password: "adminpass",
                             balance: 100000,
                         },
                         {
                             name: "demo",
                             email: "demo@demo.com",
-                            password: "demo",
+                            password: "demopass",
                             balance: 0,
                         },
                     ],
