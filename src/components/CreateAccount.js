@@ -12,7 +12,9 @@ export const CreateAccount = () => {
     const context = useContext(UserContext);
 
     function validate(field, label) {
+        const nameRegex = /^[a-zA-Z\-]+$/;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
         if (!field) {
             setStatus("Error: " + label + " is required");
             setTimeout(() => setStatus(""), 3000);
@@ -25,6 +27,11 @@ export const CreateAccount = () => {
         }
         if (!emailRegex.test(email)) {
             setStatus("Error: Please enter a valid email!");
+            setTimeout(() => setStatus(""), 3000);
+            return false;
+        }
+        if (!nameRegex.test(name)) {
+            setStatus("Error: Please enter a valid name!");
             setTimeout(() => setStatus(""), 3000);
             return false;
         }
