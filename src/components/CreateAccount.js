@@ -11,29 +11,26 @@ export const CreateAccount = () => {
     const context = useContext(UserContext);
 
     function validate(field, label) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!field) {
             setStatus("Error: " + label + " is required");
             setTimeout(() => setStatus(""), 3000);
             return false;
         }
+        if (!emailRegex.test(email)) {
+            setStatus("Error: Please enter a valid email!");
+            setTimeout(() => setStatus(""), 3000);
+            return false;
+        }
+
         return true;
     }
-
-    const validateEmail = (event) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const email = event.target.value;
-        if (emailRegex.test(email)) {
-            setStatus("Your email looks good!");
-        } else {
-            setStatus("Please enter a valid email!");
-        }
-    };
 
     function handleCreate() {
         console.log(name, email, password);
         if (
             !validate(name, "Name") ||
-            !validateEmail(email, "Email") ||
+            !validate(email, "Email") ||
             !validate(password, "Password")
         )
             return;
