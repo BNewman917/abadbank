@@ -17,6 +17,11 @@ export const Withdraw = () => {
             clearForm();
             return false;
         }
+        if (Number(field) > balance) {
+            alert("Insufficient funds");
+            clearForm();
+            return false;
+        }
         if (Number(field) <= 0) {
             alert("Please enter a positive value");
             clearForm();

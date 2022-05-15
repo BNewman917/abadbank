@@ -16,7 +16,7 @@ export const AllData = () => {
                         <p>Name: {user.name}</p>
                         <p>Email: {user.email}</p>
                         <p>Password: {user.password}</p>
-                        <p>Balance: {user.balance}</p>
+                        <p>Balance: ${user.balance.toLocaleString("en-US")}</p>
                     </>
                 }
             />
