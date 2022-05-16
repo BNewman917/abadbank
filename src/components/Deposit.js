@@ -5,7 +5,7 @@ import { capitalize } from "./helpers/capitalize";
 
 const linkStyle = {
     TextDecoration: "none",
-    color: "green",
+    color: "#E69420",
 };
 
 export const Deposit = ({ context, user, setUser }) => {

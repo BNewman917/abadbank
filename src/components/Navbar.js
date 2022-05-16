@@ -10,7 +10,12 @@ export const NavBar = () => {
     }, [title]);
 
     return (
-        <Navbar id="navbar" expand="md" style={{ backgroundColor: "#cae9ed" }}>
+        <Navbar
+            id="navbar"
+            expand="lg"
+            className="sticky-top navbar"
+            style={{ backgroundColor: "#cae9ed" }}
+        >
             <Container>
                 <Navbar.Brand>
                     <h2>Bad Bank</h2>
@@ -24,7 +29,7 @@ export const NavBar = () => {
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                 />
-                <Navbar.Collapse id="basic-navbar-nav collapse navbar-collapse">
+                <Navbar.Collapse id="collapse navbar-collapse">
                     <Nav className="me-auto navbar-collapse justify-content-end">
                         <Nav.Link
                             onClick={() => {

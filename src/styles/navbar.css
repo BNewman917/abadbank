@@ -1,4 +1,11 @@
+.nav-link {
+    margin: 0px 1px;
+    text-wrap: none;
+}
+
 .nav-link:hover, .nav-link.active {
     background-color: #b6e2e7;
     border-radius: 1rem;
+    -webkit-box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.25); 
+    box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.25);
 }
