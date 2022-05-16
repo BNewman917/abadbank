@@ -1,6 +1,4 @@
 import React from "react";
-import { Card, Container } from "react-bootstrap";
-import { UserContext } from "./partials/Context";
 import { UseCard } from "./partials/UseCard";
 import bank from "../images/bank.png";
 

@@ -1,31 +1,18 @@
-import { useContext, useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
-import { UserContext } from "./partials/Context";
 import { UseCard } from "./partials/UseCard";
 
-export const AllData = () => {
-    const context = useContext(UserContext);
-
-    const UserData = () => {
-        return context.users.map((user) => (
-            <UseCard
-                key={user.name}
-                header="User Data"
-                body={
-                    <>
-                        <p>Name: {user.name}</p>
-                        <p>Email: {user.email}</p>
-                        <p>Password: {user.password}</p>
-                        <p>Balance: ${user.balance.toLocaleString("en-US")}</p>
-                    </>
-                }
-            />
-        ));
-    };
-
-    return (
-        <Container>
-            <UserData />
-        </Container>
-    );
+export const AllData = ({ context }) => {
+    return context.users?.map((user, i) => (
+        <UseCard
+            key={i}
+            header="User Data"
+            body={
+                <>
+                    <p>Name: {user.name}</p>
+                    <p>Email: {user.email}</p>
+                    <p>Password: {user.password}</p>
+                    <p>Balance: ${user.balance.toLocaleString("en-US")}</p>
+                </>
+            }
+        />
+    ));
 };

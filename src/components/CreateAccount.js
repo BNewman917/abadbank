@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { UseCard } from "./partials/UseCard";
-import { UserContext } from "./partials/Context";
+import { UserContext } from "../context/Context";
 
 export const CreateAccount = () => {
     const [show, setShow] = useState(true);

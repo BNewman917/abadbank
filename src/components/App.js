@@ -9,20 +9,55 @@ import { Withdraw } from "./Withdraw";
 import { AllData } from "./Alldata";
 import { Login } from "./Login";
 import { Balance } from "./Balance";
-import { UseCard } from "./partials/Context";
+
+import { UserContext, CurrentUser } from "../context/Context";
 
 export const App = () => {
+    const context = useContext(UserContext);
+    const currentUser = useContext(CurrentUser);
+    const [user, setUser] = useState(currentUser);
+
     return (
         <div>
             <NavBar />
             <Routes>
                 <Route path="/" exact element={<Home />} />
-                <Route path="/CreateAccount" element={<CreateAccount />} />
-                <Route path="/Login" element={<Login />} />
-                <Route path="/Deposit" element={<Deposit />} />
-                <Route path="/Withdraw" element={<Withdraw />} />
-                <Route path="/Balance" element={<Balance />} />
-                <Route path="/AllData" element={<AllData />} />
+                <Route
+                    path="/CreateAccount"
+                    element={
+                        <CreateAccount
+                            context={context}
+                            user={user}
+                            setUser={setUser}
+                        />
+                    }
+                />
+                <Route
+                    path="/Login"
+                    element={
+                        <Login
+                            context={context}
+                            user={user}
+                            setUser={setUser}
+                        />
+                    }
+                />
+                <Route
+                    path="/Deposit"
+                    element={<Deposit context={context} user={user} />}
+                />
+                <Route
+                    path="/Withdraw"
+                    element={<Withdraw context={context} user={user} />}
+                />
+                <Route
+                    path="/Balance"
+                    element={<Balance context={context} user={user} />}
+                />
+                <Route
+                    path="/AllData"
+                    element={<AllData context={context} user={user} />}
+                />
             </Routes>
         </div>
     );
