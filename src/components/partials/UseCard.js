@@ -10,7 +10,7 @@ export const UseCard = (props) => {
         <div
             className={classes()}
             style={{
-                maxWidth: "21rem",
+                maxWidth: "24rem",
                 margin: "auto",
                 marginTop: "2rem",
             }}

@@ -12,7 +12,7 @@ export const NavBar = () => {
     return (
         <Navbar
             id="navbar"
-            expand="lg"
+            expand="md"
             className="sticky-top navbar"
             style={{ backgroundColor: "#cae9ed" }}
         >
