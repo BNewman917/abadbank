@@ -34,6 +34,7 @@ export const Withdraw = ({ context, user }) => {
 
         setBalance(Number(balance) - Number(amount));
         user.balance -= Number(amount);
+        localStorage.setItem("localUsers", JSON.stringify(context));
         alert(`Your withdrawal of $${amount.toLocaleString()} was successful`);
     }
 

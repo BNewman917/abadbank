@@ -30,14 +30,13 @@ export const Deposit = ({ context, user, setUser }) => {
 
         setBalance(Number(balance) + Number(amount));
         user.balance += Number(amount);
+        localStorage.setItem("localUsers", JSON.stringify(context));
         alert(
             `Your deposit of $${amount.toLocaleString("en-US")} was successful`
         );
     }
 
     return (
-        //============================================================
-        // {user ? () : ()} take card from Balance.js if not logged in.
         <>
             {user ? (
                 <UseCard
