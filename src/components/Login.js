@@ -20,6 +20,15 @@ export const Login = ({ context, user, setUser }) => {
         return errors;
     };
 
+    const getUser = (email) => {
+        console.log("getUser");
+        console.log(context);
+
+        const user = context.users.find((user) => user.email === email);
+
+        return user;
+    };
+
     let errors = {};
     const formik = useFormik({
         initialValues: {
@@ -28,12 +37,11 @@ export const Login = ({ context, user, setUser }) => {
         },
         validate,
         onSubmit: (values, { resetForm }) => {
-            if (values.email === "" || values.password === "") {
-                setStatus("Please fill out all fields");
+            if (formik.errors.email || formik.errors.password) {
+                setStatus(formik.errors);
+                return false;
             } else {
-                const user = context.users.find(
-                    (user) => user.email === values.email
-                );
+                const user = getUser(values.email);
                 if (user && user.password === values.password) {
                     setUser(user);
                     setStatus("");
@@ -41,6 +49,7 @@ export const Login = ({ context, user, setUser }) => {
                     alert("Login successful");
                 } else {
                     setStatus("Incorrect email or password");
+                    setTimeout(() => setStatus(""), 3000);
                 }
             }
         },
@@ -82,7 +91,7 @@ export const Login = ({ context, user, setUser }) => {
                     header="Log In"
                     status={status}
                     body={
-                        <form>
+                        <form onSubmit={formik.handleSubmit}>
                             Email
                             <br />
                             <input
@@ -92,7 +101,6 @@ export const Login = ({ context, user, setUser }) => {
                                 placeholder="Enter email"
                                 value={formik.values.email}
                                 onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
                             />
                             <br />
                             Password
@@ -104,18 +112,12 @@ export const Login = ({ context, user, setUser }) => {
                                 placeholder="Enter password"
                                 value={formik.values.password}
                                 onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
                             />
                             <br />
                             <button
                                 type="submit"
                                 id="logButton"
                                 className="btn btn-outline-success"
-                                onClick={formik.handleSubmit}
-                                disabled={
-                                    formik.values.emailLogIn &&
-                                    formik.values.pswLogIn
-                                }
                             >
                                 Log in
                             </button>
