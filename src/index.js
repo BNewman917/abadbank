@@ -14,7 +14,12 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
         <HashRouter>
-            <UserContext.Provider value={defaultUsers}>
+            <UserContext.Provider
+                value={
+                    JSON.parse(localStorage.getItem("localUsers")) ||
+                    defaultUsers
+                }
+            >
                 <CurrentUser.Provider value={null}>
                     <App />
                 </CurrentUser.Provider>

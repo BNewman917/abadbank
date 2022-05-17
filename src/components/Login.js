@@ -44,11 +44,12 @@ export const Login = ({ context, user, setUser }) => {
                 const user = getUser(values.email);
                 if (user && user.password === values.password) {
                     setUser(user);
+                    console.log(`user: ${user.name}`);
                     setStatus("");
                     resetForm();
                     alert("Login successful");
                 } else {
-                    setStatus("Incorrect email or password");
+                    setStatus("Incorrect password");
                     setTimeout(() => setStatus(""), 3000);
                 }
             }

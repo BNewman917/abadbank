@@ -1,7 +1,8 @@
 import { UseCard } from "./partials/UseCard";
 
 export const AllData = ({ context }) => {
-    return context.users?.map((user, i) => (
+    console.log(`context: ${JSON.stringify(context)}`);
+    return context?.users?.map((user, i) => (
         <UseCard
             key={i}
             header="User Data"

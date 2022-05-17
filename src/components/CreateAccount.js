@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { UseCard } from "./partials/UseCard";
 import { UserContext } from "../context/Context";
 
-export const CreateAccount = () => {
+export const CreateAccount = ({ setUser }) => {
     const [show, setShow] = useState(true);
     const [status, setStatus] = useState("");
     const [name, setName] = useState("");
@@ -35,19 +35,33 @@ export const CreateAccount = () => {
             setTimeout(() => setStatus(""), 3000);
             return false;
         }
-
+        for (let i = 0; i < context.users.length; i++) {
+            if (context.users[i].email === email) {
+                setStatus("Error: An account with that email already exists!");
+                setTimeout(() => setStatus(""), 3000);
+                return false;
+            }
+        }
         return true;
     }
 
     function handleCreate() {
-        console.log(name, email, password);
+        console.log(context);
         if (
             !validate(name, "Name") ||
             !validate(email, "Email") ||
             !validate(password, "Password")
         )
             return;
-        context.users.push({ name, email, password, balance: 0 });
+
+        context.users.push({
+            name: name,
+            email: email,
+            password: password,
+            balance: 0,
+        });
+
+        localStorage.setItem("localUsers", JSON.stringify(context));
         setShow(false);
     }
 
