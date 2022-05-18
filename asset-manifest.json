@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/abadbank/static/css/main.c3e58ea8.css",
-    "main.js": "/abadbank/static/js/main.6a9fa9c2.js",
+    "main.js": "/abadbank/static/js/main.23e27cdb.js",
     "index.html": "/abadbank/index.html",
     "main.c3e58ea8.css.map": "/abadbank/static/css/main.c3e58ea8.css.map",
-    "main.6a9fa9c2.js.map": "/abadbank/static/js/main.6a9fa9c2.js.map"
+    "main.23e27cdb.js.map": "/abadbank/static/js/main.23e27cdb.js.map"
   },
   "entrypoints": [
     "static/css/main.c3e58ea8.css",
-    "static/js/main.6a9fa9c2.js"
+    "static/js/main.23e27cdb.js"
   ]
 }
