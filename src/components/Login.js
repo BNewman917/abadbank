@@ -43,11 +43,7 @@ export const Login = ({ context, user, setUser }) => {
     };
 
     const getUser = (email) => {
-        console.log("getUser");
-        console.log(context);
-
         const user = context.users.find((user) => user.email === email);
-
         return user;
     };
 
@@ -58,16 +54,15 @@ export const Login = ({ context, user, setUser }) => {
         },
         validate,
         onSubmit: (values, { resetForm }) => {
+            const user = getUser(values.email);
             if (formik.errors.email || formik.errors.password) {
                 setStatus(formik.errors.email || formik.errors.password);
                 setTimeout(() => setStatus(""), 3000);
                 return false;
             }
             if (user && user.password === values.password) {
-                const user = getUser(values.email);
                 setUser(user);
                 sessionStorage.setItem("loggedUser", JSON.stringify(user));
-                console.log(`user: ${user.name}`);
                 setStatus("");
                 resetForm();
                 alert("Login successful");
