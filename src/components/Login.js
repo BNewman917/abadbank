@@ -44,6 +44,7 @@ export const Login = ({ context, user, setUser }) => {
                 const user = getUser(values.email);
                 if (user && user.password === values.password) {
                     setUser(user);
+                    sessionStorage.setItem("loggedUser", JSON.stringify(user));
                     console.log(`user: ${user.name}`);
                     setStatus("");
                     resetForm();
@@ -57,6 +58,7 @@ export const Login = ({ context, user, setUser }) => {
     });
 
     const handleLogout = () => {
+        sessionStorage.clear();
         setUser(null);
     };
 
