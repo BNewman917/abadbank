@@ -4,8 +4,10 @@ import { useFormik } from "formik";
 import { capitalize } from "./helpers/capitalize";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+
 const eye = <FontAwesomeIcon icon={faEye} />;
+const eyeSlash = <FontAwesomeIcon icon={faEyeSlash} />;
 
 const passWrap = {
     display: "flex",
@@ -137,7 +139,7 @@ export const Login = ({ context, user, setUser }) => {
                                     onChange={formik.handleChange}
                                 />
                                 <i style={eyeStyle} onClick={togglePass}>
-                                    {eye}
+                                    {showPass ? eye : eyeSlash}
                                 </i>
                             </div>
                             <br />

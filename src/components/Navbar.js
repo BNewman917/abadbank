@@ -4,6 +4,7 @@ import "../styles/navbar.css";
 
 export const NavBar = () => {
     const [title, setTitle] = useState("Home");
+    const [expanded, setExpanded] = useState(false);
 
     useEffect(() => {
         document.title = title;
@@ -11,6 +12,7 @@ export const NavBar = () => {
 
     return (
         <Navbar
+            collapseOnSelect
             id="navbar"
             expand="md"
             className="sticky-top navbar"
