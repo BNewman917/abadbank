@@ -3,11 +3,32 @@ import { UseCard } from "./partials/UseCard";
 import { useFormik } from "formik";
 import { capitalize } from "./helpers/capitalize";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+const eye = <FontAwesomeIcon icon={faEye} />;
+
+const passWrap = {
+    display: "flex",
+    position: "relative",
+};
+
+const eyeStyle = {
+    position: "absolute",
+    right: "1rem",
+    top: ".5rem",
+};
+
 export const Login = ({ context, user, setUser }) => {
     const [status, setStatus] = useState("");
+    const [showPass, setShowPass] = useState(false);
     // const [disabled, setDisabled] = useContext(true);
 
+    const togglePass = () => {
+        setShowPass(showPass ? false : true);
+    };
+
     const validate = (values) => {
+        let errors = {};
         if (!values.email) {
             errors.email = "Field required";
         } else if (
@@ -15,7 +36,6 @@ export const Login = ({ context, user, setUser }) => {
         ) {
             errors.email = "Email is invalid";
         }
-
         if (!values.password) errors.password = "Field required";
         return errors;
     };
@@ -29,7 +49,6 @@ export const Login = ({ context, user, setUser }) => {
         return user;
     };
 
-    let errors = {};
     const formik = useFormik({
         initialValues: {
             email: "",
@@ -38,21 +57,21 @@ export const Login = ({ context, user, setUser }) => {
         validate,
         onSubmit: (values, { resetForm }) => {
             if (formik.errors.email || formik.errors.password) {
-                setStatus(formik.errors);
+                setStatus(formik.errors.email || formik.errors.password);
+                setTimeout(() => setStatus(""), 3000);
                 return false;
-            } else {
+            }
+            if (user && user.password === values.password) {
                 const user = getUser(values.email);
-                if (user && user.password === values.password) {
-                    setUser(user);
-                    sessionStorage.setItem("loggedUser", JSON.stringify(user));
-                    console.log(`user: ${user.name}`);
-                    setStatus("");
-                    resetForm();
-                    alert("Login successful");
-                } else {
-                    setStatus("Incorrect password");
-                    setTimeout(() => setStatus(""), 3000);
-                }
+                setUser(user);
+                sessionStorage.setItem("loggedUser", JSON.stringify(user));
+                console.log(`user: ${user.name}`);
+                setStatus("");
+                resetForm();
+                alert("Login successful");
+            } else {
+                setStatus("Incorrect password");
+                setTimeout(() => setStatus(""), 3000);
             }
         },
     });
@@ -108,14 +127,19 @@ export const Login = ({ context, user, setUser }) => {
                             <br />
                             Password
                             <br />
-                            <input
-                                type="password"
-                                className="form-control"
-                                id="password"
-                                placeholder="Enter password"
-                                value={formik.values.password}
-                                onChange={formik.handleChange}
-                            />
+                            <div style={passWrap}>
+                                <input
+                                    type={showPass ? "text" : "password"}
+                                    className="form-control"
+                                    id="password"
+                                    placeholder="Enter password"
+                                    value={formik.values.password}
+                                    onChange={formik.handleChange}
+                                />
+                                <i style={eyeStyle} onClick={togglePass}>
+                                    {eye}
+                                </i>
+                            </div>
                             <br />
                             <button
                                 type="submit"
