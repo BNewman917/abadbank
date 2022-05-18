@@ -2,6 +2,22 @@ import { useContext, useEffect, useState } from "react";
 import { UseCard } from "./partials/UseCard";
 import { UserContext } from "../context/Context";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+const eye = <FontAwesomeIcon icon={faEye} />;
+const eyeSlash = <FontAwesomeIcon icon={faEyeSlash} />;
+
+const passWrap = {
+    display: "flex",
+    position: "relative",
+};
+
+const eyeStyle = {
+    position: "absolute",
+    right: "1rem",
+    top: ".5rem",
+};
+
 export const CreateAccount = ({ setUser }) => {
     const [show, setShow] = useState(true);
     const [status, setStatus] = useState("");
@@ -9,7 +25,12 @@ export const CreateAccount = ({ setUser }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [disabled, setDisabled] = useState(true);
+    const [showPass, setShowPass] = useState(false);
     const context = useContext(UserContext);
+
+    const togglePass = () => {
+        setShowPass(showPass ? false : true);
+    };
 
     function validate(field, label) {
         const nameRegex = /^[a-zA-Z\-]+$/;
@@ -111,17 +132,22 @@ export const CreateAccount = ({ setUser }) => {
                         <br />
                         Password
                         <br />
-                        <input
-                            type="password"
-                            className="form-control"
-                            id="password"
-                            placeholder="Enter password"
-                            value={password}
-                            onChange={(event) => {
-                                setPassword(event.currentTarget.value);
-                                setDisabled(false);
-                            }}
-                        />
+                        <div style={passWrap}>
+                            <input
+                                type={showPass ? "text" : "password"}
+                                className="form-control"
+                                id="password"
+                                placeholder="Enter password"
+                                value={password}
+                                onChange={(event) => {
+                                    setPassword(event.currentTarget.value);
+                                    setDisabled(false);
+                                }}
+                            />
+                            <i style={eyeStyle} onClick={togglePass}>
+                                {showPass ? eye : eyeSlash}
+                            </i>
+                        </div>
                         <br />
                         <button
                             disabled={disabled}
