@@ -41,18 +41,13 @@ export const CreateAccount = ({ setUser }) => {
             setTimeout(() => setStatus(""), 3000);
             return false;
         }
-        if (password.length < 8) {
-            setStatus("Error: Password must be at least 8 characters");
+        if (!nameRegex.test(name)) {
+            setStatus("Error: Please enter a valid name!");
             setTimeout(() => setStatus(""), 3000);
             return false;
         }
         if (!emailRegex.test(email)) {
             setStatus("Error: Please enter a valid email!");
-            setTimeout(() => setStatus(""), 3000);
-            return false;
-        }
-        if (!nameRegex.test(name)) {
-            setStatus("Error: Please enter a valid name!");
             setTimeout(() => setStatus(""), 3000);
             return false;
         }
@@ -62,6 +57,11 @@ export const CreateAccount = ({ setUser }) => {
                 setTimeout(() => setStatus(""), 3000);
                 return false;
             }
+        }
+        if (password.length < 8) {
+            setStatus("Error: Password must be at least 8 characters");
+            setTimeout(() => setStatus(""), 3000);
+            return false;
         }
         return true;
     }

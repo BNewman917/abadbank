@@ -17,6 +17,10 @@ export const App = () => {
     const currentUser = useContext(CurrentUser);
     const [user, setUser] = useState(currentUser);
 
+    useEffect(() => {
+        sessionStorage.setItem("loggedUser", JSON.stringify(user));
+    }, [user]);
+
     return (
         <div>
             <NavBar />

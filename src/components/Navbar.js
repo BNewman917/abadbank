@@ -1,6 +1,17 @@
 import { useEffect, useState } from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import {
+    Navbar,
+    Nav,
+    Container,
+    OverlayTrigger,
+    Popover,
+} from "react-bootstrap";
 import "../styles/navbar.css";
+
+const PopoverStyle = {
+    backgroundColor: "#E3FCFF",
+    borderRadius: ".5rem",
+};
 
 export const NavBar = () => {
     const [title, setTitle] = useState("Home");
@@ -20,7 +31,10 @@ export const NavBar = () => {
         >
             <Container>
                 <Navbar.Brand>
-                    <h2>Bad Bank</h2>
+                    <h2>
+                        BadBank
+                        <sub style={{ fontSize: ".75rem" }}> byBrent</sub>
+                    </h2>
                 </Navbar.Brand>
                 <Navbar.Toggle
                     className="navbar-toggler fw-bolder text-black"
@@ -33,62 +47,174 @@ export const NavBar = () => {
                 />
                 <Navbar.Collapse id="collapse navbar-collapse">
                     <Nav className="me-auto navbar-collapse justify-content-end">
-                        <Nav.Link
-                            onClick={() => {
-                                setTitle("Home");
-                            }}
-                            href="#/"
+                        <OverlayTrigger
+                            placement="bottom"
+                            trigger={["hover", "focus"]}
+                            overlay={
+                                <Popover
+                                    id="popover-basic"
+                                    style={PopoverStyle}
+                                >
+                                    <Popover.Body>
+                                        Navigate to Bad Bank home page.
+                                    </Popover.Body>
+                                </Popover>
+                            }
                         >
-                            Home
-                        </Nav.Link>
-                        <Nav.Link
-                            onClick={() => {
-                                setTitle("Create Account");
-                            }}
-                            href="#/createAccount"
+                            <Nav.Link
+                                onClick={() => {
+                                    setTitle("Home");
+                                }}
+                                href="#/"
+                            >
+                                Home
+                            </Nav.Link>
+                        </OverlayTrigger>
+
+                        <OverlayTrigger
+                            placement="bottom"
+                            trigger={["hover", "focus"]}
+                            overlay={
+                                <Popover
+                                    id="popover-basic"
+                                    style={PopoverStyle}
+                                >
+                                    <Popover.Body>
+                                        Create a new account. All created
+                                        accounts are saved to local storage.
+                                    </Popover.Body>
+                                </Popover>
+                            }
                         >
-                            Create Account
-                        </Nav.Link>
-                        <Nav.Link
-                            onClick={() => {
-                                setTitle("Log In");
-                            }}
-                            href="#/login"
+                            <Nav.Link
+                                onClick={() => {
+                                    setTitle("Create Account");
+                                }}
+                                href="#/createAccount"
+                            >
+                                Create Account
+                            </Nav.Link>
+                        </OverlayTrigger>
+
+                        <OverlayTrigger
+                            placement="bottom"
+                            trigger={["hover", "focus"]}
+                            overlay={
+                                <Popover
+                                    id="popover-basic"
+                                    style={PopoverStyle}
+                                >
+                                    <Popover.Body>
+                                        Log in to an existing account.
+                                    </Popover.Body>
+                                </Popover>
+                            }
                         >
-                            Log In
-                        </Nav.Link>
-                        <Nav.Link
-                            onClick={() => {
-                                setTitle("Deposit");
-                            }}
-                            href="#/deposit"
+                            <Nav.Link
+                                onClick={() => {
+                                    setTitle("Log In");
+                                }}
+                                href="#/login"
+                            >
+                                Log In
+                            </Nav.Link>
+                        </OverlayTrigger>
+
+                        <OverlayTrigger
+                            placement="bottom"
+                            trigger={["hover", "focus"]}
+                            overlay={
+                                <Popover
+                                    id="popover-basic"
+                                    style={PopoverStyle}
+                                >
+                                    <Popover.Body>
+                                        Deposit money into an account.
+                                    </Popover.Body>
+                                </Popover>
+                            }
                         >
-                            Deposit
-                        </Nav.Link>
-                        <Nav.Link
-                            onClick={() => {
-                                setTitle("Withdraw");
-                            }}
-                            href="#/withdraw"
+                            <Nav.Link
+                                onClick={() => {
+                                    setTitle("Deposit");
+                                }}
+                                href="#/deposit"
+                            >
+                                Deposit
+                            </Nav.Link>
+                        </OverlayTrigger>
+
+                        <OverlayTrigger
+                            placement="bottom"
+                            trigger={["hover", "focus"]}
+                            overlay={
+                                <Popover
+                                    id="popover-basic"
+                                    style={PopoverStyle}
+                                >
+                                    <Popover.Body>
+                                        Withdraw money from an account.
+                                    </Popover.Body>
+                                </Popover>
+                            }
                         >
-                            Withdraw
-                        </Nav.Link>
-                        <Nav.Link
-                            onClick={() => {
-                                setTitle("Balance");
-                            }}
-                            href="#/balance"
+                            <Nav.Link
+                                onClick={() => {
+                                    setTitle("Withdraw");
+                                }}
+                                href="#/withdraw"
+                            >
+                                Withdraw
+                            </Nav.Link>
+                        </OverlayTrigger>
+
+                        <OverlayTrigger
+                            placement="bottom"
+                            trigger={["hover", "focus"]}
+                            overlay={
+                                <Popover
+                                    id="popover-basic"
+                                    style={PopoverStyle}
+                                >
+                                    <Popover.Body>
+                                        Check your balance.
+                                    </Popover.Body>
+                                </Popover>
+                            }
                         >
-                            Balance
-                        </Nav.Link>
-                        <Nav.Link
-                            onClick={() => {
-                                setTitle("All Data");
-                            }}
-                            href="#/allData"
+                            <Nav.Link
+                                onClick={() => {
+                                    setTitle("Balance");
+                                }}
+                                href="#/balance"
+                            >
+                                Balance
+                            </Nav.Link>
+                        </OverlayTrigger>
+
+                        <OverlayTrigger
+                            placement="bottom"
+                            trigger={["hover", "focus"]}
+                            overlay={
+                                <Popover
+                                    id="popover-basic"
+                                    style={PopoverStyle}
+                                >
+                                    <Popover.Body>
+                                        All user data saved to local storage.
+                                    </Popover.Body>
+                                </Popover>
+                            }
                         >
-                            All Data
-                        </Nav.Link>
+                            <Nav.Link
+                                onClick={() => {
+                                    setTitle("All Data");
+                                }}
+                                href="#/allData"
+                            >
+                                All Data
+                            </Nav.Link>
+                        </OverlayTrigger>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

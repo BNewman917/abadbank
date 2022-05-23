@@ -20,9 +20,7 @@ root.render(
                     defaultUsers
                 }
             >
-                <CurrentUser.Provider
-                    value={JSON.parse(sessionStorage.getItem("loggedUser"))}
-                >
+                <CurrentUser.Provider value={null}>
                     <App />
                 </CurrentUser.Provider>
             </UserContext.Provider>
